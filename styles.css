@@ -63,7 +63,9 @@ h1{
     font-family: 'Miltonian', cursive;
 
 }
-
+.greeting{
+    text-align: center;
+}
 .seccion-oscura{
     color: white;
     background-color: #1b1b32;
