@@ -35,19 +35,43 @@ a {
 
 /*         FIN DE NAV VAR          */
 /*Galeria inicio*/
-.galeria{
+.img{
+    max-width: 99%;
+    max-height: 99%;
+}
+
+.image-slider{
+    background-color: black;
     display: flex;
     justify-content: space-around;
+    align-content: center;
+    position: relative;
+    height: 600px;
+    padding: 20px;
 }
-.galeria img{
-    width: 200px;
-    height: 200px;
-    margin: 20px;
+
+.button-img{
+    border-style: none;
+    width: 10%;
+    height: 100%;
+    opacity: 100%;
+    font-size: 60px;
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
 
+.button-img:hover{
+    color: grey;
+    font-size: 70px;
+}
 
-
-
+#prev-button{
+    left: 0;
+}
+#next-button{
+    right: 0;
+}
 /*Galeria fin */
 
 /*Estilos Generales*/
