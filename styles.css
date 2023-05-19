@@ -51,6 +51,7 @@ a {
 }
 
 .button-img{
+    position: absolute;
     border-style: none;
     width: 10%;
     height: 100%;

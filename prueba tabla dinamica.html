@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabla de Países</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    #add-row {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>Tabla de Países</h1>
+
+<button id="reset-btn">Reset</button>
+<table id="countries-table">
+  <thead>
+  <tr>
+    <th>Nombre del país</th>
+    <th>Puntaje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>País 1</td>
+    <td>500</td>
+  </tr>
+  <tr>
+    <td>País 2</td>
+    <td>800</td>
+  </tr>
+  <tr>
+    <td>País 3</td>
+    <td>200</td>
+  </tr>
+  <tr>
+    <td>País 4</td>
+    <td>300</td>
+  </tr>
+  <tr>
+    <td>País 5</td>
+    <td>600</td>
+  </tr>
+  </tbody>
+</table>
+
+<button id="add-row">Agregar Fila</button>
+
+<script>
+  // Estado inicial de la tabla
+  const initialTableState = [
+    { nombre: 'País 1', puntaje: '500' },
+    { nombre: 'País 2', puntaje: '800' },
+    { nombre: 'País 3', puntaje: '200' },
+    { nombre: 'País 4', puntaje: '300' },
+    { nombre: 'País 5', puntaje: '600' }
+  ];
+
+  let currentTableState = [...initialTableState];
+  let table = document.getElementById('countries-table');
+  let addRowButton = document.getElementById('add-row');
+  let resetButton = document.getElementById('reset-btn');
+
+  // Agregar evento al botón "Agregar Fila"
+  addRowButton.addEventListener('click', function() {
+    addNewRow();
+  });
+
+  // Agregar evento al botón "Reset"
+  resetButton.addEventListener('click', function() {
+    resetTable();
+  });
+
+  // Función para agregar una nueva fila a la tabla
+  function addNewRow() {
+    let newRow = table.insertRow(-1);
+    newRow.contentEditable = true;
+
+    let countryCell = newRow.insertCell(0);
+    countryCell.contentEditable = true;
+
+    let scoreCell = newRow.insertCell(1);
+    scoreCell.contentEditable = true;
+
+    currentTableState.push({ nombre: '', puntaje: '' });
+  }
+
+  // Función para restaurar la tabla a su estado original
+  function resetTable() {
+    table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Nombre del país</th>
+            <th>Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      `;
+
+    currentTableState = [...initialTableState];
+
+    let tbody = table.querySelector('tbody');
+    currentTableState.forEach(function(rowData) {
+      let row = tbody.insertRow(-1);
+
+      let countryCell = row.insertCell(0);
+      countryCell.textContent = rowData.nombre;
+
+      let scoreCell = row.insertCell(1);
+      scoreCell.textContent = rowData.puntaje;
+    });
+  }
+</script>
+</body>
+</html>
